@@ -22,3 +22,17 @@ export default function App({ Component, pageProps }) {
 	4.ISR (Incremental Static Regeneration)
 	-- SSG와 마찬가지로 처림 빌드시 미리 prerender되나 일정시간마다 정기적으로 서버쪽에서 데이터를 refetching해 점진적으로 새로운 데이터로 변경된 prerender page 제공
 */
+/*
+Atomic Design Pattern: 컴포넌트를 원자처럼 최소단위로 쪼개서 재활용가능한 컴포넌트 개발 로직
+	Atoms(원자)
+	- 버튼, 메뉴, 제목, 글자, 폼요소, 이미지
+	Molecules(분자)
+	- 검색바(폼,버트), 블로그리스트 하나 (글자, 버튼, 이미지)
+	Organisms(유기체)
+	- Header, 블로그 목록, Footer, Visusl
+	Page(페이지 레이아웃)
+	- 각 유기체를 조합해 구성한 페이지 
+	Atomic Design Pattern 단점
+	- 처음 개발시 공수가 많이 들어가 설계를 치밀해야 해야됨
+	- Atomic Design Pattern개발한 컴포넌트의 구조를 프로젝트를 진행하는 팀원들이 해당 내용을 숙지해야됨
+*/
