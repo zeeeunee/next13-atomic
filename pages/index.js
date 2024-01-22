@@ -12,19 +12,26 @@ export default function Home({ meals }) {
 			<Head>
 				<title>Main Page</title>
 			</Head>
-
 			<main className={styles.main}>
 				<h1>Main page</h1>
-				{mealsData.map((item) => {
-					return (
-						<div key={item.idMeal}>
-							<div className={clsx(styles.bg)}>
-								<Pic imgSrc={item.strMealThumb} />
+				{mealsData.map((item, idx) => {
+					if (0 === idx % 2) {
+						return (
+							<div key={item.idMeal}>
+								<div className={clsx(styles.bg)}>
+									<Pic imgSrc={item.strMealThumb} />
+								</div>
 							</div>
-
-							<h2>{item.strMeal}</h2>
-						</div>
-					);
+						);
+					} else {
+						return (
+							<div key={item.idMeal}>
+								<div className={clsx(styles.bg)}>
+									<Pic imgSrc={item.strMealThumb} imgTxt={item.strMeal} />
+								</div>
+							</div>
+						);
+					}
 				})}
 			</main>
 		</>
