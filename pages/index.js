@@ -4,6 +4,8 @@ import Image from 'next/image';
 import Pic from '@/components/pic/Pic';
 import styles from './Home.module.scss';
 import clsx from 'clsx';
+import Text from '@/components/text/Text';
+
 export default function Home({ meals }) {
 	console.log('ssg', meals);
 	const mealsData = meals.slice(0, 5);
@@ -15,7 +17,7 @@ export default function Home({ meals }) {
 
 			<main className={styles.main}>
 				<h1>Main page</h1>
-				{mealsData.map((item) => {
+				{/* {mealsData.map((item) => {
 					return (
 						<div key={item.idMeal}>
 							<div className={clsx(styles.bg)}>
@@ -23,7 +25,13 @@ export default function Home({ meals }) {
 							</div>
 						</div>
 					);
-				})}
+				})} */}
+				<Text tagName={'h1'}>Hello</Text>
+				<Text tagName={'p'}>
+					Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eveniet fugiat tenetur, voluptate quia nulla distinctio quaerat aliquam eligendi
+					blanditiis repellendus placeat atque, veritatis optio culpa ducimus, magni quo dolorum itaque!
+				</Text>
+				<Text>안녕하세요.</Text>
 			</main>
 		</>
 	);
