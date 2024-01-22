@@ -1,6 +1,6 @@
 import Head from 'next/head';
 import axios from 'axios';
-import Image from 'next/image';
+import Pic from '@/components/pic/Pic';
 
 export default function Home({ meals }) {
 	console.log('ssg', meals);
@@ -16,7 +16,7 @@ export default function Home({ meals }) {
 				{mealsData.map((item) => {
 					return (
 						<div key={item.idMeal}>
-							<Image src={item.strMealThumb} alt={item.strMeal} priority width={100} height={100} />
+							<Pic imgSrc={item.strMealThumb} />
 							<h2>{item.strMeal}</h2>
 						</div>
 					);
