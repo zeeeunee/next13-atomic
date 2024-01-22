@@ -11,3 +11,14 @@ export default function App({ Component, pageProps }) {
 	_app.js (index.js를 가져와서 document를 적용해서 루트 컴포넌트를 작동시키는 시동파일)
 	index.js (초기 메인페이지 컴포넌트)
 */
+/*
+	Next13에서의 새로운 렌더링 방식 
+	1.CSR (Client Side Rendering)
+	-- 기존 리액트와 동일하게 컴포넌트가 브라우저에 마운트 됬을때 클라이언트쪽에서 페이지 빌드 시작
+	2.SSR (Server Side Rendering)
+	-- URL요청이 있을때마다 서버쪽에서 Page 빌드후 완성된 HTML파일을 클라이언트쪽에 제공
+	3.SSG (Static Site Generation)
+	-- 처음 프로젝트 빌드시 미리 prerender처리 해서 완성된 정적인 HTML파일을 클라이언트쪽에 제공
+	4.ISR (Incremental Static Regeneration)
+	-- SSG와 마찬가지로 처림 빌드시 미리 prerender되나 일정시간마다 정기적으로 서버쪽에서 데이터를 refetching해 점진적으로 새로운 데이터로 변경된 prerender page 제공
+*/
