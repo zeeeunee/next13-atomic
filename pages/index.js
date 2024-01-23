@@ -11,9 +11,7 @@ export default function Home({ meals }) {
 				<title>Main Page</title>
 			</Head>
 
-			<main className={styles.main}>
-				<Detail />
-			</main>
+			<main className={styles.main}></main>
 		</>
 	);
 }

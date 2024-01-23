@@ -1,10 +1,8 @@
 import Table from '@/components/atoms/table/Table';
 import axios from 'axios';
 import { useState, useEffect } from 'react';
-
 export default function Detail() {
 	const [Recipe, setRecipe] = useState(null);
-
 	const recipe = {
 		member: [
 			{ name: 'David', age: 20, address: 'Seoul' },
@@ -12,11 +10,8 @@ export default function Detail() {
 			{ name: 'Michael', age: 40, address: 'Daegu' },
 		],
 	};
-
 	const title = Object.keys(recipe)[0];
 	const data = Object.values(recipe)[0];
-	console.log('title', title);
-	console.log('data', data);
 
 	useEffect(() => {
 		axios.get('/search.php?s=Arrabiata').then((json) => {
@@ -26,7 +21,7 @@ export default function Detail() {
 
 	return (
 		<section>
-			<Table data={data} title={title} />
+			<Table data={data} title={title} isCount reverse />
 		</section>
 	);
 }
