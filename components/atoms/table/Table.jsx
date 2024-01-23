@@ -35,6 +35,8 @@ export function TableY({ data, title, className, isCount = false, reverse = fals
 }
 
 export function TableX({ data, title, className, reverse = false }) {
+	data = reverse ? [...data].reverse() : [...data];
+	//키값만 배열로 추출
 	const keys = Object.keys(data[0]);
 	return (
 		<>
@@ -47,9 +49,14 @@ export function TableX({ data, title, className, reverse = false }) {
 			<table border='1' className={clsx(styles.table, className)}>
 				<tbody>
 					{data.map((_, idx) => (
+						//tr반복
 						<tr key={idx}>
 							<th scope='row'>{keys[idx]}</th>
 							{keys.map((_, idx2) => (
+								//td반복
+								//0: data[0][keys[0]], data[0][keys[1]], data[0][keys[2]]
+								//1: data[1][keys[0]], data[1][keys[1]], data1][keys[2]]
+								//2: data[2][keys[0]], data[2][keys[1]], data[2][keys[2]]
 								<td key={idx2}>{data[idx2][keys[idx]]}</td>
 							))}
 						</tr>
