@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 
 export default function Detail() {
 	const [Recipe, setRecipe] = useState(null);
-	console.log(Recipe);
+
 	const recipe = {
 		member: [
 			{ name: 'David', age: 20, address: 'Seoul' },

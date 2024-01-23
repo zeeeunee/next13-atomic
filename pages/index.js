@@ -2,6 +2,7 @@ import Head from 'next/head';
 import axios from 'axios';
 import styles from './Home.module.scss';
 import clsx from 'clsx';
+import Detail from './find-recipe/[id]';
 
 export default function Home({ meals }) {
 	return (
@@ -10,7 +11,9 @@ export default function Home({ meals }) {
 				<title>Main Page</title>
 			</Head>
 
-			<main className={styles.main}></main>
+			<main className={styles.main}>
+				<Detail />
+			</main>
 		</>
 	);
 }
