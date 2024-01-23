@@ -8,7 +8,6 @@ import Text from '@/components/atoms/text/Text';
 
 export default function Home({ meals }) {
 	console.log('ssg', meals);
-	const mealsData = meals.slice(0, 5);
 	return (
 		<>
 			<Head>
@@ -16,25 +15,20 @@ export default function Home({ meals }) {
 			</Head>
 
 			<main className={styles.main}>
-				<h1>Main page</h1>
-				{/* {mealsData.map((item) => {
-					return (
-						<div key={item.idMeal}>
-							<div className={clsx(styles.bg)}>
-								<Pic imgSrc={item.strMealThumb} imgTxt={item.strMeal} url={'/gallery'} />
-							</div>
-						</div>
-					);
-				})} */}
-				<Text tagName={'h1'}>Hello</Text>
-				<Text tagName={'p'}>
-					Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eveniet fugiat tenetur, voluptate quia nulla distinctio quaerat aliquam eligendi
-					blanditiis repellendus placeat atque, veritatis optio culpa ducimus, magni quo dolorum itaque!
+				<Text url={'/'} tagName={'h1'} styleType={'logo'}>
+					DCODELAB
 				</Text>
-				<Text>안녕하세요.</Text>
-				<Text tagName={'h3'} url='/gallery'>
-					갤러리로 이동
+
+				<Text tagName={'h2'} styleType={'title1'}>
+					Title comes here.
 				</Text>
+
+				<Text>
+					Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque fugit vero voluptate accusamus magni cum sit perspiciatis quisquam officia
+					sed.
+				</Text>
+
+				<Text styleType={'slogan'}>Slogan</Text>
 			</main>
 		</>
 	);
