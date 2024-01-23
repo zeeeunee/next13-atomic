@@ -36,7 +36,6 @@ export function TableY({ data, title, className, isCount = false, reverse = fals
 
 export function TableX({ data, title, className, reverse = false }) {
 	const keys = Object.keys(data[0]);
-
 	return (
 		<>
 			{title && (
@@ -47,10 +46,10 @@ export function TableX({ data, title, className, reverse = false }) {
 
 			<table border='1' className={clsx(styles.table, className)}>
 				<tbody>
-					{data.map((el, idx) => (
+					{data.map((_, idx) => (
 						<tr key={idx}>
 							<th scope='row'>{keys[idx]}</th>
-							{Object.values(el).map((_, idx2) => (
+							{keys.map((_, idx2) => (
 								<td key={idx2}>{data[idx2][keys[idx]]}</td>
 							))}
 						</tr>
