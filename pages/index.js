@@ -15,20 +15,10 @@ export default function Home({ meals }) {
 			</Head>
 
 			<main className={styles.main}>
-				<Text url={'/'} tagName={'h1'} styleType={'logo'}>
-					DCODELAB
-				</Text>
-
-				<Text tagName={'h2'} styleType={'title1'}>
-					Title comes here.
-				</Text>
-
-				<Text>
-					Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque fugit vero voluptate accusamus magni cum sit perspiciatis quisquam officia
-					sed.
-				</Text>
-
 				<Text styleType={'slogan'}>Slogan</Text>
+				<Text styleType={'slogan'} className={clsx(styles.customTit)}>
+					Slogan2
+				</Text>
 			</main>
 		</>
 	);

@@ -10,7 +10,6 @@ const nanum = Nanum_Myeongjo({
 	preload: true,
 	variable: '--font-nanum',
 });
-
 const orbitron = Orbitron({
 	subsets: ['latin'],
 	weight: ['400', '600'],
@@ -18,11 +17,11 @@ const orbitron = Orbitron({
 	variable: '--font-orbitron',
 });
 
-export default function Text({ children, url, tagName = 'p', styleType }) {
+export default function Text({ children, url, tagName = 'p', styleType, className }) {
 	return React.createElement(
 		tagName,
 		{
-			className: clsx(styles.text, nanum.variable, orbitron.variable, styles[styleType]),
+			className: clsx(styles.text, nanum.variable, orbitron.variable, styles[styleType], className),
 		},
 		url ? React.createElement(Link, { href: url }, children) : children
 	);
