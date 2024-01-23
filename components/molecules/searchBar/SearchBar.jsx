@@ -7,7 +7,9 @@ export default function SearchBar({ value, onChange, className, placeholder }) {
 	return (
 		<div className={clsx(styles.searchBar, className)}>
 			<Input value={value} onChange={onChange} placeholder={placeholder} />
-			<RiSearchLine />
+			<button>
+				<RiSearchLine />
+			</button>
 		</div>
 	);
 }
