@@ -2,22 +2,15 @@ import Head from 'next/head';
 import axios from 'axios';
 import styles from './Home.module.scss';
 import clsx from 'clsx';
-import Input from '@/components/atoms/input/Input';
-import { useState } from 'react';
 
 export default function Home({ meals }) {
-	const [Val, setVal] = useState('');
-	console.log(Val);
-
 	return (
 		<>
 			<Head>
 				<title>Main Page</title>
 			</Head>
 
-			<main className={styles.main}>
-				<Input value={Val} onChange={setVal} />
-			</main>
+			<main className={styles.main}></main>
 		</>
 	);
 }
