@@ -1,7 +1,6 @@
 import clsx from 'clsx';
 import styles from './table.module.scss';
 import Text from '../text/Text';
-
 export function TableY({ data, title, className, isCount = false, reverse = false }) {
 	data = reverse ? [...data].reverse() : [...data];
 	return (
@@ -14,7 +13,7 @@ export function TableY({ data, title, className, isCount = false, reverse = fals
 			<table className={clsx(styles.table, className)} border='1'>
 				<thead>
 					<tr>
-						{isCount && <th scope='column'>No</th>}
+						{isCount && <th scope='col'>No</th>}
 						{Object.keys(data[0]).map((key) => (
 							<th key={key}>{key}</th>
 						))}
@@ -37,7 +36,6 @@ export function TableY({ data, title, className, isCount = false, reverse = fals
 
 export function TableX({ data, title, className, reverse = false }) {
 	const keys = Object.keys(data[0]);
-	console.log(keys);
 
 	return (
 		<>
@@ -47,13 +45,13 @@ export function TableX({ data, title, className, reverse = false }) {
 				</Text>
 			)}
 
-			<table border='1'>
+			<table border='1' className={clsx(styles.table, className)}>
 				<tbody>
 					{data.map((el, idx) => (
 						<tr key={idx}>
-							<th>{keys[idx]}</th>
-							{Object.values(el).map((val, idx) => (
-								<td key={idx}>{val}</td>
+							<th scope='row'>{keys[idx]}</th>
+							{Object.values(el).map((_, idx2) => (
+								<td key={idx2}>{data[idx2][keys[idx]]}</td>
 							))}
 						</tr>
 					))}

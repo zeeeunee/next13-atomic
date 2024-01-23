@@ -1,4 +1,4 @@
-import { TableX } from '@/components/atoms/table/Table';
+import { TableX, TableY } from '@/components/atoms/table/Table';
 import axios from 'axios';
 import { useState, useEffect } from 'react';
 
@@ -18,10 +18,11 @@ export default function Detail() {
 			setRecipe(json.data);
 		});
 	}, []);
-
 	return (
 		<section>
 			<TableX data={data} title={title} isCount />
+
+			<TableY data={data} title={title} isCount reverse />
 		</section>
 	);
 }
