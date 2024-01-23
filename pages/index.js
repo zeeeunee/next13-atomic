@@ -2,12 +2,12 @@ import Head from 'next/head';
 import axios from 'axios';
 import styles from './Home.module.scss';
 import clsx from 'clsx';
-import List from '@/components/atoms/list/List';
+import Input from '@/components/atoms/input/Input';
+import { useState } from 'react';
 
 export default function Home({ meals }) {
-	console.log('ssg', meals);
-	const topRated = ['Avartar', 'Emma', 'AquaMan'];
-	const url = ['/', '/gallery', '/about'];
+	const [Val, setVal] = useState('');
+	console.log(Val);
 
 	return (
 		<>
@@ -16,7 +16,7 @@ export default function Home({ meals }) {
 			</Head>
 
 			<main className={styles.main}>
-				<List data={topRated} tagName={'ol'} divider={'-'} url={url} />
+				<Input value={Val} onChange={setVal} />
 			</main>
 		</>
 	);
