@@ -1,13 +1,19 @@
-import SearchBar from '@/components/molecules/searchBar/SearchBar';
-import { useState } from 'react';
+import Category from '@/components/molecules/category/Category';
 
 export default function Pages() {
-	const [Val, setVal] = useState('');
-	console.log(Val);
+	const fetchData = [
+		{ name: 'David', age: 20 },
+		{ name: 'Emily', age: 30 },
+		{ name: 'Paul', age: 40 },
+	];
+	const nameArr = fetchData.map((data) => data.name);
 
+	const handleClick = ({ data, idx }) => {
+		console.log(data[idx]);
+	};
 	return (
 		<section>
-			<SearchBar value={Val} onChange={setVal} />
+			<Category fetchDataArr={fetchData} nameArr={nameArr} onClick={handleClick} />
 		</section>
 	);
 }
