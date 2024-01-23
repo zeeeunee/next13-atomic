@@ -9,6 +9,8 @@ import Text from '../text/Text';
 */
 
 export default function Table({ data, title, className, isCount = false, reverse = false }) {
+	console.log(data);
+	data = reverse ? [...data].reverse() : [...data];
 	return (
 		<>
 			{title && (
