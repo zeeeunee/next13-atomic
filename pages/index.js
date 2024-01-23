@@ -1,10 +1,10 @@
 import Head from 'next/head';
 import axios from 'axios';
 import Image from 'next/image';
-import Pic from '@/components/pic/Pic';
+import Pic from '@/components/atoms/pic/Pic';
 import styles from './Home.module.scss';
 import clsx from 'clsx';
-import Text from '@/components/text/Text';
+import Text from '@/components/atoms/text/Text';
 
 export default function Home({ meals }) {
 	console.log('ssg', meals);
@@ -32,6 +32,9 @@ export default function Home({ meals }) {
 					blanditiis repellendus placeat atque, veritatis optio culpa ducimus, magni quo dolorum itaque!
 				</Text>
 				<Text>안녕하세요.</Text>
+				<Text tagName={'h3'} url='/gallery'>
+					갤러리로 이동
+				</Text>
 			</main>
 		</>
 	);
