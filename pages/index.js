@@ -8,6 +8,8 @@ import Text from '@/components/atoms/text/Text';
 
 export default function Home({ meals }) {
 	console.log('ssg', meals);
+	const menuName = ['about', 'gallery', 'youtube'];
+
 	return (
 		<>
 			<Head>
@@ -15,10 +17,13 @@ export default function Home({ meals }) {
 			</Head>
 
 			<main className={styles.main}>
-				<Text styleType={'slogan'}>Slogan</Text>
-				<Text styleType={'slogan'} className={clsx(styles.customTit)}>
-					Slogan2
-				</Text>
+				<nav>
+					{menuName.map((name, idx) => (
+						<Text key={name} url={`/${name}`} tagName={'span'} isOn={idx === 0}>
+							{name}
+						</Text>
+					))}
+				</nav>
 			</main>
 		</>
 	);
