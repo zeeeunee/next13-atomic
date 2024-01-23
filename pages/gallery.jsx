@@ -1,7 +1,9 @@
+import Navbar from '@/components/molecules/navbar/Navbar';
+
 export default function Pages() {
 	return (
 		<section>
-			<h1>Gallery Page</h1>
+			<Navbar data={['Find Recipe', 'Gallery', 'About']} />
 		</section>
 	);
 }
