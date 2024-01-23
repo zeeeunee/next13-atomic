@@ -55,7 +55,7 @@ export function TableX({ data, title, className, reverse = false }) {
 							{keys.map((_, idx2) => (
 								//td반복
 								//0: data[0][keys[0]], data[0][keys[1]], data[0][keys[2]]
-								//1: data[1][keys[0]], data[1][keys[1]], data1][keys[2]]
+								//1: data[1][keys[0]], data[1][keys[1]], data[1][keys[2]]
 								//2: data[2][keys[0]], data[2][keys[1]], data[2][keys[2]]
 								<td key={idx2}>{data[idx2][keys[idx]]}</td>
 							))}
