@@ -1,6 +1,7 @@
-import Table from '@/components/atoms/table/Table';
+import { TableX } from '@/components/atoms/table/Table';
 import axios from 'axios';
 import { useState, useEffect } from 'react';
+
 export default function Detail() {
 	const [Recipe, setRecipe] = useState(null);
 	const recipe = {
@@ -12,7 +13,6 @@ export default function Detail() {
 	};
 	const title = Object.keys(recipe)[0];
 	const data = Object.values(recipe)[0];
-
 	useEffect(() => {
 		axios.get('/search.php?s=Arrabiata').then((json) => {
 			setRecipe(json.data);
@@ -21,7 +21,7 @@ export default function Detail() {
 
 	return (
 		<section>
-			<Table data={data} title={title} isCount reverse />
+			<TableX data={data} title={title} isCount />
 		</section>
 	);
 }
