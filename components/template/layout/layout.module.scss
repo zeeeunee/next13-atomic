@@ -4,31 +4,35 @@
 	overflow: hidden;
 	background: #111;
 	padding: 15vh 0 10vh;
-
 	//header를 제외한 컨텐츠 영역
 	.content {
 		color: #ccc;
 		height: 100%;
 		overflow-y: auto;
-
-		//그 안쪽에 커스텀 스크롤바 설정
+		//그안쪽에 커스텀 스크롤바 설정
 		&::-webkit-scrollbar {
 			width: 4px;
 		}
-		&::-webkit-scroll-thumb {
+		&::-webkit-scrollbar-thumb {
 			border-radius: 2px;
-			background: var(--point1);
+			background: var(--point);
 		}
 
-		//각 페이지별 root tag (main page)
+		//메인페이지 전용 root tag (main page)
 		> main {
 			width: 100%;
 		}
-
 		//각 페이지별 root tag (sub page)
 		> section {
 			width: 80vw;
+			padding-top: 60px;
 			margin: 0px auto;
+
+			h1 {
+				font-size: 3rem;
+				font-weight: 400;
+				font-family: var(--font-nanum);
+			}
 		}
 	}
 }
