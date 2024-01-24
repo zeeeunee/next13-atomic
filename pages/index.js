@@ -2,7 +2,6 @@ import Head from 'next/head';
 import styles from './Home.module.scss';
 import axios from 'axios';
 import Image from 'next/image';
-import Layout from '@/components/template/layout/Layout';
 
 export default function Home({ meals, category }) {
 	return (
@@ -11,7 +10,7 @@ export default function Home({ meals, category }) {
 				<title>Main Page</title>
 			</Head>
 
-			<div className={styles.main}>
+			<main className={styles.main}>
 				<h1>Main Page</h1>
 				<h2>{category}</h2>
 
@@ -24,7 +23,7 @@ export default function Home({ meals, category }) {
 						</article>
 					);
 				})}
-			</div>
+			</main>
 		</>
 	);
 }
