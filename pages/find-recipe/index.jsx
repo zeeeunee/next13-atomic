@@ -16,7 +16,7 @@ export default function FindRecipe({ categories }) {
 	return (
 		<section className={clsx(styles.findRecipe)}>
 			<h1>Find Recipe</h1>
-			<Category dataArr={Names} selected={Selected} onClick={handleClick} />
+			<Category dataArr={Names} selectedEl={Selected} onClick={handleClick} className={clsx(styles.category)} />
 		</section>
 	);
 }
