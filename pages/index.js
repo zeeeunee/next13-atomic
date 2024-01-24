@@ -12,20 +12,18 @@ export default function Home({ meals, category }) {
 			</Head>
 
 			<div className={styles.main}>
-				<Layout>
-					<h1>Main Page</h1>
-					<h2>{category}</h2>
+				<h1>Main Page</h1>
+				<h2>{category}</h2>
 
-					{meals.map((data, idx) => {
-						if (idx > 5) return null;
-						return (
-							<article key={idx}>
-								<Image src={data.strMealThumb} alt={data.strMeal} width={100} height={100} priority />
-								<h3>{data.strMeal}</h3>
-							</article>
-						);
-					})}
-				</Layout>
+				{meals.map((data, idx) => {
+					if (idx > 5) return null;
+					return (
+						<article key={idx}>
+							<Image src={data.strMealThumb} alt={data.strMeal} width={100} height={100} priority />
+							<h3>{data.strMeal}</h3>
+						</article>
+					);
+				})}
 			</div>
 		</>
 	);
