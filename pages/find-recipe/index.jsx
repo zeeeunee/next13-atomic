@@ -12,15 +12,21 @@ export default function FindRecipe({ categories }) {
 	const handleClick = (activeEl) => {
 		setSelected(activeEl);
 	};
-
 	return (
 		<section className={clsx(styles.findRecipe)}>
 			<Category dataArr={Names} selectedEl={Selected} onClick={handleClick} className={clsx(styles.category)} />
-
 			<h1>{Selected}</h1>
 			{isSuccess &&
 				dataByCategory.map((data) => {
-					return <Card key={data.idMeal} imgSrc={data.strMealThumb} txt={data.strMeal} className={clsx(styles.foodItem)} />;
+					return (
+						<Card
+							key={data.idMeal}
+							imgSrc={data.strMealThumb}
+							txt={data.strMeal}
+							className={clsx(styles.foodItem)}
+							url={`/find-recipe/${data.idMeal}`}
+						/>
+					);
 				})}
 		</section>
 	);
