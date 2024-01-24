@@ -8,6 +8,7 @@ const nextConfig = {
 	},
 	images: {
 		domains: ['www.themealdb.com'],
+		domains: ['images.unsplash.com'],
 	},
 	compiler: { styledComponents: true },
 };
