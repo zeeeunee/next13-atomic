@@ -7,8 +7,7 @@ const nextConfig = {
 		prependData: `@import "styles/_variables.scss";`,
 	},
 	images: {
-		domains: ['www.themealdb.com'],
-		domains: ['images.unsplash.com'],
+		domains: ['www.themealdb.com', 'images.unsplash.com'],
 	},
 	compiler: { styledComponents: true },
 };
