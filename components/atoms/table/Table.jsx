@@ -1,6 +1,7 @@
 import clsx from 'clsx';
 import styles from './table.module.scss';
 import Text from '../text/Text';
+
 export function TableY({ data, title, className, isCount = false, reverse = false }) {
 	data = reverse ? [...data].reverse() : [...data];
 	return (
@@ -10,6 +11,7 @@ export function TableY({ data, title, className, isCount = false, reverse = fals
 					{title}
 				</Text>
 			)}
+
 			<table className={clsx(styles.table, className)} border='1'>
 				<thead>
 					<tr>
@@ -33,11 +35,10 @@ export function TableY({ data, title, className, isCount = false, reverse = fals
 		</>
 	);
 }
-
 export function TableX({ data, title, className, reverse = false }) {
 	data = reverse ? [...data].reverse() : [...data];
-	//키값만 배열로 추출
-	const keys = Object.keys(data[0]);
+	const keys = Object.keys(data[0]); //['name','age']
+
 	return (
 		<>
 			{title && (
@@ -48,15 +49,15 @@ export function TableX({ data, title, className, reverse = false }) {
 
 			<table border='1' className={clsx(styles.table, className)}>
 				<tbody>
-					{data.map((_, idx) => (
-						//tr반복
+					{/* 주의: 키의 종류에따라서 tr을 생성할 것이기 때문에 전달된 data배열의 갯수만큼 반복도는 것이 아닌 객체안의 키의 개수만큼 반복을 돌리면서 tr을 생성 */}
+					{keys.map((_, idx) => (
+						//idx:key의 반복순번
 						<tr key={idx}>
 							<th scope='row'>{keys[idx]}</th>
-							{keys.map((_, idx2) => (
-								//td반복
-								//0: data[0][keys[0]], data[0][keys[1]], data[0][keys[2]]
-								//1: data[1][keys[0]], data[1][keys[1]], data[1][keys[2]]
-								//2: data[2][keys[0]], data[2][keys[1]], data[2][keys[2]]
+							{/* 내부적으로 반복을돌때는 데이터배열자체의 갯수에 따라서 td가 생성되야 되기 때문에 data로 반복처리 */}
+							{data.map((_, idx2) => (
+								//idx2: data배열의 반복순번
+								//td는 data의 갯수만큼 반복을 돌면서 상위에서 반복도는 순번의 키값의 데이터만 출력
 								<td key={idx2}>{data[idx2][keys[idx]]}</td>
 							))}
 						</tr>
@@ -66,3 +67,29 @@ export function TableX({ data, title, className, reverse = false }) {
 		</>
 	);
 }
+
+/*
+  2차원 배열 
+  - 배열의 요소안에 또다시 배열이 들어가있는 경우
+  - 상위 배열의 반복을 돌때 다시 내부적으로 하위요소 또다시 반복처리 (중첩 반복문)
+  2차원 배열을 제일 많이 쓰는 사례 
+  - DB(table형식의 DB)에서 자료를 순차적으로 뽑아야될떄
+  <tr>
+    <td>0-0</td> <td>0-1</td> <td>0-2</td>
+  </tr>
+  <tr>
+    <td>1-0</td> <td>1-1</td> <td>1-2</td>
+  </tr>
+  위의 로직을 반복문으로 풀었을때
+  아래로직은 tr이 한번 반복돌때 내부적으로 td세번 반복처리
+  trArr.map((tr, idx0)=>{
+    //tr 반복처리
+    console.log(idx0) --> 0,1
+    tdArr.map((td, idx1)=>{
+      //td 반복처리
+      console.log(idx0+"-"+idx1) 
+      0-0,0-1, 0-2 (첫번째) tr반복시)
+      1-0,1-1, 1-2 (두번째 tr반복시)
+    })
+  })
+*/
