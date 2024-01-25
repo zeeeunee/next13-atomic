@@ -5,6 +5,7 @@ import styles from './detail.module.scss';
 import clsx from 'clsx';
 import { useEffect, useState } from 'react';
 import { TableY } from '@/components/atoms/table/Table';
+import List from '@/components/atoms/list/List';
 
 export default function Detail() {
 	const [TableData, setTableData] = useState([]);
@@ -35,6 +36,14 @@ export default function Detail() {
 				measure: data[`strMeasure${idx + 1}`],
 			}));
 
+			// const ingredients = keys.map((key, idx) => {
+			// 	return {
+			// 		no: idx + 1,
+			// 		ingredient: data[`strIngredient${idx + 1}`],
+			// 		measure: data[`strMeasure${idx + 1}`]
+			// 	};
+			// });
+
 			setTableData(ingredients);
 		}
 	}, [data]);
@@ -48,7 +57,9 @@ export default function Detail() {
 						<Pic imgSrc={data.strMealThumb} />
 					</div>
 
-					{<TableY data={TableData} title={'Ingredients'} className={clsx(styles.detailTable)} />}
+					<TableY data={TableData} title={'Ingredients'} className={clsx(styles.detailTable)} />
+
+					<List />
 				</>
 			)}
 		</section>
