@@ -16,7 +16,7 @@ export function TableY({ data, title, className, isCount = false, reverse = fals
 				<thead>
 					<tr>
 						{isCount && <th scope='col'>No</th>}
-						{Object.keys(data[0]).map((key) => (
+						{Object.keys(data[0] || {}).map((key) => (
 							<th key={key}>{key}</th>
 						))}
 					</tr>
