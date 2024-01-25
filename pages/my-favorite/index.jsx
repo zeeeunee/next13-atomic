@@ -25,6 +25,7 @@ export default function MyFavorite() {
 							txt={data.strMeal}
 							className={styles.favoriteCard}
 							url={`/find-recipe/${data.idMeal}?name=${data.strMeal}`}
+							styleType={'horizontal'}
 						/>
 					);
 				}
