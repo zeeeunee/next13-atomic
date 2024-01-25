@@ -2,24 +2,37 @@ import clsx from 'clsx';
 import axios from 'axios';
 import styles from './find-recipe.module.scss';
 import Category from '@/components/molecules/category/Category';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useRecipeByCategory, useRecipeBySearch } from '@/hooks/useRecipe';
 import Card from '@/components/molecules/card/Card';
 import SearchBar from '@/components/molecules/searchBar/SearchBar';
+import { useDebounce } from '@/hooks/useDebounce';
 
 export default function FindRecipe({ categories }) {
 	const [Names, setNames] = useState(categories.map((el) => el.strCategory));
 	const [Selected, setSelected] = useState(categories[0].strCategory);
 	const [Search, setSearch] = useState('');
-	console.log(Search);
+	const DebouncedSelected = useDebounce(Selected);
+	const DebouncedSearch = useDebounce(Search);
 
-	const { data: dataByCategory, isSuccess } = useRecipeByCategory(Selected, '');
-	const { data: dataBySearch, isSuccess: isSearch } = useRecipeBySearch(Search);
-	console.log(dataBySearch);
+	const { data: dataByCategory, isSuccess } = useRecipeByCategory(DebouncedSelected, '');
+	const { data: dataBySearch, isSuccess: isSearch } = useRecipeBySearch(DebouncedSearch);
 
 	const handleClick = (activeEl) => {
+		//카테고리 버튼 클릭시 기존 Search값을 비워서 기존 검색목록을 제거하고 선택된 카테고리 목록 출력
+		setSearch('');
 		setSelected(activeEl);
 	};
+
+	useEffect(() => {
+		//검색어가 있으면 Selected를 비워서 기존의 선택된 카테고리 메뉴목록 제거
+		if (Search) {
+			setSelected('');
+		} else {
+			setSearch('');
+		}
+	}, [Search]);
+
 	return (
 		<section className={clsx(styles.findRecipe)}>
 			<div className={clsx(styles.controller)}>
@@ -27,9 +40,10 @@ export default function FindRecipe({ categories }) {
 				<SearchBar value={Search} onChange={setSearch} placeholder={'Search Recipe'} className={clsx(styles.searchBox)} />
 			</div>
 
-			<h1>{Selected}</h1>
-			{isSearch &&
-				dataBySearch.map((data) => {
+			<h1>{Search ? `Keyword: ${Search}` : Selected}</h1>
+
+			{isSuccess &&
+				dataByCategory.map((data) => {
 					return (
 						<Card
 							key={data.idMeal}
@@ -40,8 +54,9 @@ export default function FindRecipe({ categories }) {
 						/>
 					);
 				})}
-			{isSuccess &&
-				dataByCategory.map((data) => {
+
+			{isSearch &&
+				dataBySearch.map((data) => {
 					return (
 						<Card
 							key={data.idMeal}

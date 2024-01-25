@@ -2,6 +2,7 @@ import { useQuery, useQueries } from '@tanstack/react-query';
 import axios from 'axios';
 //------------------------------------------------------------------------------------------------
 const getRecipeByCategory = async ({ queryKey }) => {
+	console.log('fetching Category');
 	const { data } = await axios.get(`/filter.php?c=${queryKey[1]}`);
 	return data?.meals || [];
 };
@@ -20,6 +21,7 @@ export const useRecipeByCategory = (DebounceCategory, DebounceSearch) => {
 //--------------------------------------------------------------------------------------------------
 
 const getRecipeBySearch = async ({ queryKey }) => {
+	console.log('fetching');
 	const { data } = await axios.get(`/search.php?s=${queryKey[1]}`);
 	return data?.meals || [];
 };
