@@ -2,6 +2,13 @@ import clsx from 'clsx';
 import styles from './table.module.scss';
 import Text from '../text/Text';
 
+/*
+[
+	{ name: 'ingredient', ingredient: '재료명', measure: '측량' },
+	{ name: 'ingredient', ingredient: '재료명', measure: '측량' },
+	{ name: 'ingredient', ingredient: '재료명', measure: '측량' }
+];
+*/
 export function TableY({ data, title, className, isCount = false, reverse = false }) {
 	data = reverse ? [...data].reverse() : [...data];
 	return (
@@ -17,7 +24,7 @@ export function TableY({ data, title, className, isCount = false, reverse = fals
 					<tr>
 						{isCount && <th scope='col'>No</th>}
 						{/* 아래코드에서 값이 undefined가 뜰때 굳이 빈 {}로 설정해야지 오류가 발생하지 않는 이유 : keys()자체가 파라미터값으로 무조건 객체만 들어올수 있도록 타입이 강제되어 있기 때문 */}
-						{Object.keys(data[0] || {}).map((key) => (
+						{Object.keys(data[0] || {}).map(key => (
 							<th key={key}>{key}</th>
 						))}
 					</tr>
@@ -73,19 +80,25 @@ export function TableX({ data, title, className, reverse = false }) {
   2차원 배열 
   - 배열의 요소안에 또다시 배열이 들어가있는 경우
   - 상위 배열의 반복을 돌때 다시 내부적으로 하위요소 또다시 반복처리 (중첩 반복문)
+
   2차원 배열을 제일 많이 쓰는 사례 
   - DB(table형식의 DB)에서 자료를 순차적으로 뽑아야될떄
+
   <tr>
     <td>0-0</td> <td>0-1</td> <td>0-2</td>
   </tr>
+
   <tr>
     <td>1-0</td> <td>1-1</td> <td>1-2</td>
   </tr>
+
   위의 로직을 반복문으로 풀었을때
+
   아래로직은 tr이 한번 반복돌때 내부적으로 td세번 반복처리
   trArr.map((tr, idx0)=>{
     //tr 반복처리
     console.log(idx0) --> 0,1
+
     tdArr.map((td, idx1)=>{
       //td 반복처리
       console.log(idx0+"-"+idx1) 
@@ -93,4 +106,6 @@ export function TableX({ data, title, className, reverse = false }) {
       1-0,1-1, 1-2 (두번째 tr반복시)
     })
   })
+
+
 */

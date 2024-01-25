@@ -1,7 +1,7 @@
 import clsx from 'clsx';
+import styles from './header.module.scss';
 import Text from '@/components/atoms/text/Text';
 import Navbar from '@/components/molecules/navbar/Navbar';
-import styles from './header.module.scss';
 
 export default function Header() {
 	return (
@@ -10,7 +10,7 @@ export default function Header() {
 				DCODELAB
 			</Text>
 
-			<Navbar data={['Find Recipe', 'My Favorite']} />
+			<Navbar data={['Find Recipe', 'My Favorait']} />
 		</header>
 	);
 }

@@ -14,7 +14,7 @@
 			width: auto !important;
 		}
 
-		.btnFavorite {
+		.btnFavoraite {
 			//flex속성에서 요소좌우 배치시 제일큰 높이요소를 기점으로 나머지 요소도 같이 높이가 늘어감 (stretch)
 			//해결방법: height: fit-content설정시 stretch를 무시하고 자기원래 높이값 설정됨
 			height: fit-content;
@@ -30,6 +30,7 @@
 	}
 	.detailTable {
 		width: 45%;
+
 		tr {
 			th th:nth-of-type(1) {
 				width: 5%;
@@ -39,6 +40,7 @@
 			}
 		}
 	}
+
 	.detailList {
 		width: 45%;
 	}

@@ -12,14 +12,14 @@ const nanum = Nanum_Myeongjo({
 	subsets: ['latin'],
 	weight: ['400', '700'],
 	preload: true,
-	variable: '--font-nanum',
+	variable: '--font-nanum'
 });
 
 const orbitron = Orbitron({
 	subsets: ['latin'],
 	weight: ['400', '600'],
 	preload: true,
-	variable: '--font-orbitron',
+	variable: '--font-orbitron'
 });
 
 export default function Layout({ children }) {
@@ -43,8 +43,7 @@ export default function Layout({ children }) {
 						initial={{ scaleX: 1 }}
 						animate={{ scaleX: 0 }}
 						exit={{ scaleX: 0 }}
-						transition={{ duration: 0.7 }}
-					></motion.div>
+						transition={{ duration: 0.7 }}></motion.div>
 				</div>
 			</motion.div>
 		</AnimatePresence>

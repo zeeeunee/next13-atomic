@@ -13,6 +13,15 @@
 		.category {
 			margin-bottom: 20px;
 		}
+		.searchBox {
+			button {
+				font-size: 1rem;
+				position: absolute;
+				right: 0;
+				top: 50%;
+				transform: translateY(-50%);
+			}
+		}
 	}
 
 	.foodItem {
@@ -20,6 +29,7 @@
 		margin-bottom: 120px;
 	}
 }
+
 @media screen and (max-width: $tabletB) {
 	.findRecipe {
 		.foodItem {
@@ -27,6 +37,7 @@
 		}
 	}
 }
+
 @media screen and (max-width: $tabletS) {
 	.findRecipe {
 		.foodItem {
@@ -34,6 +45,7 @@
 		}
 	}
 }
+
 @media screen and (max-width: $mobile) {
 	.findRecipe {
 		.foodItem {

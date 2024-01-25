@@ -1,15 +1,15 @@
 import Router from 'next/router';
 
-export const keepStyle = (delay) => {
+export const keepStyle = delay => {
 	Router.events.on('beforeHistoryChange', () => {
 		const nodes = document.querySelectorAll('link[rel=stylesheet], style');
-		const copies = [...nodes].map((el) => el.cloneNode(true));
+		const copies = [...nodes].map(el => el.cloneNode(true));
 
 		for (let copy of copies) {
 			copy.removeAttribute('data-n-g');
 			copy.removeAttribute('data-n-href');
-			copy.removeAttribute('data-n-p');
-			copy.removeAttribute('media');
+			//copy.removeAttribute('data-n-p');
+			//copy.removeAttribute('media');
 			document.head.appendChild(copy);
 		}
 		const handler = () => {
