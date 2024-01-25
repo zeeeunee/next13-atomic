@@ -7,7 +7,7 @@ import { useRouter } from 'next/router';
 export default function Breadcrumb({ divider = '/' }) {
 	const router = useRouter();
 	const pathArr = router.asPath.split('/');
-	//path값에서 만약 쿼리스트링값이 있으면 쿼리의 name값만 따로 추출해서 이름 recieName에 담아줌
+	//path값에서 만약 쿼리스트링값이 있으면 쿼리의 name값만 따로 추출해서 이름 recipeName에 담아줌
 	const { name: recipeName } = router.query;
 	console.log(recipeName);
 
@@ -27,7 +27,7 @@ export default function Breadcrumb({ divider = '/' }) {
 				if (idx === pathArr.length - 1) {
 					return (
 						<Text key={idx} tagName={'strong'} isOn>
-							{/* 마지막 path경로일때 recipeName라는 쿼리값이 있으면 해당 값을 breadcrumb에 출력 없으면 걍 마지막 path경로명 출력 */}
+							{/* 마지막 path경로일때 recipeName라는 쿼리값이 있으면 해당 값을 breadcrumb에 출력 없으면 그냥 마지막 path경로명 출력 */}
 							{recipeName ? recipeName : displayName}
 						</Text>
 					);
