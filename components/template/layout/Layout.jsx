@@ -14,6 +14,7 @@ const nanum = Nanum_Myeongjo({
 	preload: true,
 	variable: '--font-nanum',
 });
+
 const orbitron = Orbitron({
 	subsets: ['latin'],
 	weight: ['400', '600'],
