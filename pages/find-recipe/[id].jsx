@@ -11,10 +11,17 @@ import Text from '@/components/atoms/text/Text';
 export default function Detail() {
 	const [TableData, setTableData] = useState([]);
 	const [ListData, setListData] = useState([]);
+	const [Saved, setSaved] = useState(false); //해당값의 유무에 따라 즐겨찾기유무 확인
+	console.log(Saved);
+
 	const router = useRouter();
 	const { id } = router.query;
 
 	const { data, isSuccess } = useRecipeById(id);
+
+	const handleSave = () => {
+		setSaved(!Saved);
+	};
 
 	useEffect(() => {
 		if (data) {
@@ -42,8 +49,8 @@ export default function Detail() {
 				<>
 					<div className={clsx(styles.upper)}>
 						<h1>{data.strMeal}</h1>
-						<Text className={styles.btnFavorite} styleType={'button'}>
-							Add to My Favorite
+						<Text className={styles.btnFavorite} styleType={'button'} onClick={handleSave} isOn={Saved}>
+							{Saved ? 'Remove from My Favorite' : 'Add to My Favorite'}
 						</Text>
 					</div>
 
