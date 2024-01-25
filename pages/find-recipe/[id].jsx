@@ -7,21 +7,36 @@ import { useEffect, useState } from 'react';
 import { TableY } from '@/components/atoms/table/Table';
 import List from '@/components/atoms/list/List';
 import Text from '@/components/atoms/text/Text';
-
 export default function Detail() {
 	const [TableData, setTableData] = useState([]);
 	const [ListData, setListData] = useState([]);
 	const [Saved, setSaved] = useState(false); //해당값의 유무에 따라 즐겨찾기유무 확인
 	console.log(Saved);
-
 	const router = useRouter();
 	const { id } = router.query;
-
 	const { data, isSuccess } = useRecipeById(id);
 
+	//즐겨찾기 버튼 토글시 로컬저장소에 params로 들어온 레시피 아이디값을 저장해주는 함수
 	const handleSave = () => {
-		setSaved(!Saved);
+		const savedRecipe = JSON.parse(localStorage.getItem('favorite')) || [];
+
+		if (!Saved) {
+			savedRecipe.push(data.idMeal);
+			localStorage.setItem('favorite', JSON.stringify(savedRecipe));
+			setSaved(true);
+		} else {
+			//배열.splice(삭제할배열의 순번위치, 삭제할 갯수)
+			savedRecipe.splice(savedRecipe.indexOf(data.isMeal), 1);
+			localStorage.setItem('favorite', JSON.stringify(savedRecipe));
+			setSaved(false);
+		}
 	};
+
+	//사용자 이벤트가 아닌 해당 페이지컴포넌트가 마운트시 로컬저장소의 값을 비교해서 즐겨찾기버튼 상태변경
+	useEffect(() => {
+		const savedRecipe = JSON.parse(localStorage.getItem('favorite')) || [];
+		savedRecipe.includes(id) ? setSaved(true) : setSaved(false);
+	}, [id]);
 
 	useEffect(() => {
 		if (data) {
