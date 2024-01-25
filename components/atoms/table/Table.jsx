@@ -16,6 +16,7 @@ export function TableY({ data, title, className, isCount = false, reverse = fals
 				<thead>
 					<tr>
 						{isCount && <th scope='col'>No</th>}
+						{/* 아래코드에서 값이 undefined가 뜰때 굳이 빈 {}로 설정해야지 오류가 발생하지 않는 이유 : keys()자체가 파라미터값으로 무조건 객체만 들어올수 있도록 타입이 강제되어 있기 때문 */}
 						{Object.keys(data[0] || {}).map((key) => (
 							<th key={key}>{key}</th>
 						))}
@@ -37,7 +38,7 @@ export function TableY({ data, title, className, isCount = false, reverse = fals
 }
 export function TableX({ data, title, className, reverse = false }) {
 	data = reverse ? [...data].reverse() : [...data];
-	const keys = Object.keys(data[0]); //['name','age']
+	const keys = Object.keys(data[0] || {}); //['name','age']
 
 	return (
 		<>

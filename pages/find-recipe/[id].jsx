@@ -9,6 +9,7 @@ import List from '@/components/atoms/list/List';
 
 export default function Detail() {
 	const [TableData, setTableData] = useState([]);
+	const [ListData, setListData] = useState([]);
 
 	const router = useRouter();
 	const { id } = router.query;
@@ -45,6 +46,10 @@ export default function Detail() {
 			// });
 
 			setTableData(ingredients);
+
+			const instructions = data.strInstructions.split('\r\n');
+			console.log(instructions);
+			setListData(instructions);
 		}
 	}, [data]);
 
@@ -59,7 +64,7 @@ export default function Detail() {
 
 					<TableY data={TableData} title={'Ingredients'} className={clsx(styles.detailTable)} />
 
-					<List />
+					<List data={ListData} tagName={'ol'} className={clsx(styles.detailList)} />
 				</>
 			)}
 		</section>
