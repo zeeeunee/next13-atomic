@@ -2,29 +2,36 @@
 	font-family: var(--font-nanum);
 	font-weight: 400;
 	font-size: 1rem;
+
 	&:hover {
 		color: var(--point);
 	}
+
 	&.on {
 		color: var(--point);
 	}
+
 	a {
 		font-size: inherit;
 		color: inherit;
 		font-family: inherit;
 		font-weight: inherit;
+
 		&:hover {
 			color: var(--point);
 		}
 	}
+
 	&.logo {
 		font-family: var(--font-orbitron);
 		font-weight: 600;
 		font-size: 1.8rem;
 	}
+
 	&.title1 {
 		font-size: 1.2rem;
 	}
+
 	&.slogan {
 		color: var(--point);
 		font-size: 20vw;
