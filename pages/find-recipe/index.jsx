@@ -3,26 +3,43 @@ import axios from 'axios';
 import styles from './find-recipe.module.scss';
 import Category from '@/components/molecules/category/Category';
 import { useState } from 'react';
-import { useRecipeByCategory } from '@/hooks/useRecipe';
+import { useRecipeByCategory, useRecipeBySearch } from '@/hooks/useRecipe';
 import Card from '@/components/molecules/card/Card';
 import SearchBar from '@/components/molecules/searchBar/SearchBar';
 
 export default function FindRecipe({ categories }) {
 	const [Names, setNames] = useState(categories.map((el) => el.strCategory));
 	const [Selected, setSelected] = useState(categories[0].strCategory);
+	const [Search, setSearch] = useState('');
+	console.log(Search);
+
 	const { data: dataByCategory, isSuccess } = useRecipeByCategory(Selected, '');
+	const { data: dataBySearch, isSuccess: isSearch } = useRecipeBySearch(Search);
+	console.log(dataBySearch);
+
 	const handleClick = (activeEl) => {
 		setSelected(activeEl);
 	};
-
 	return (
 		<section className={clsx(styles.findRecipe)}>
 			<div className={clsx(styles.controller)}>
 				<Category dataArr={Names} selectedEl={Selected} onClick={handleClick} className={clsx(styles.category)} />
-				<SearchBar placeholder={'Search Recipe'} className={clsx(styles.searchBox)} />
+				<SearchBar value={Search} onChange={setSearch} placeholder={'Search Recipe'} className={clsx(styles.searchBox)} />
 			</div>
 
 			<h1>{Selected}</h1>
+			{isSearch &&
+				dataBySearch.map((data) => {
+					return (
+						<Card
+							key={data.idMeal}
+							imgSrc={data.strMealThumb}
+							txt={data.strMeal}
+							className={clsx(styles.foodItem)}
+							url={`/find-recipe/${data.idMeal}?name=${data.strMeal}`}
+						/>
+					);
+				})}
 			{isSuccess &&
 				dataByCategory.map((data) => {
 					return (
