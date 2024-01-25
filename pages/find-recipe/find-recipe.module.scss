@@ -9,24 +9,9 @@
 		display: flex;
 		flex-wrap: wrap;
 		justify-content: space-between;
-	}
 
-	.category {
-		margin-bottom: 20px;
-	}
-
-	.category {
-		width: 100%;
-		margin-bottom: 20px;
-	}
-
-	.searchBox {
-		button {
-			font-size: 1rem;
-			position: absolute;
-			right: 0;
-			top: 50%;
-			transform: translateY(-50%);
+		.category {
+			margin-bottom: 20px;
 		}
 	}
 
@@ -35,7 +20,6 @@
 		margin-bottom: 120px;
 	}
 }
-
 @media screen and (max-width: $tabletB) {
 	.findRecipe {
 		.foodItem {
@@ -43,7 +27,6 @@
 		}
 	}
 }
-
 @media screen and (max-width: $tabletS) {
 	.findRecipe {
 		.foodItem {
@@ -51,7 +34,6 @@
 		}
 	}
 }
-
 @media screen and (max-width: $mobile) {
 	.findRecipe {
 		.foodItem {
