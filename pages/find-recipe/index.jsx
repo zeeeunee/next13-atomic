@@ -7,6 +7,7 @@ import { useRecipeByCategory, useRecipeBySearch } from '@/hooks/useRecipe';
 import Card from '@/components/molecules/card/Card';
 import SearchBar from '@/components/molecules/searchBar/SearchBar';
 import { useDebounce } from '@/hooks/useDebounce';
+import Text from '@/components/atoms/text/Text';
 
 export default function FindRecipe({ categories }) {
 	const [Names, setNames] = useState(categories.map((el) => el.strCategory));
@@ -29,7 +30,7 @@ export default function FindRecipe({ categories }) {
 		if (Search) {
 			setSelected('');
 		} else {
-			setSearch('');
+			setSelected(categories[0].strCategory);
 		}
 	}, [Search]);
 
@@ -67,6 +68,13 @@ export default function FindRecipe({ categories }) {
 						/>
 					);
 				})}
+			{isSearch && dataBySearch.length === 0 && (
+				<Text>
+					No Results!! <br /> Try Another Recipe Name.
+				</Text>
+			)}
+
+			{/* {Search === '' && <Text>There is no Keyword you Input..</Text>} */}
 		</section>
 	);
 }
